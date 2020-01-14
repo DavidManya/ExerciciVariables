@@ -28,6 +28,7 @@ namespace ConsoleApp1
             Console.WriteLine($"El meu nom és {cognom1} {cognom2}, " + nom);
             Console.WriteLine($"Avui és {dia}/{mes}/{any}");
             Console.WriteLine($"Avui és {diae}/{mese}/{anye}");
+            Console.WriteLine("------------------------------------------");
 
             //Fase 2
             int anyinici = 1948;
@@ -39,12 +40,47 @@ namespace ConsoleApp1
             //Demanar que introdueixi data de naixement
             Console.WriteLine("Introdueix la teva data de naixement i prem Enter");
             naixement = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("------------------------------------------");
 
             //Calculem diferència d'anys
             dif = naixement - anyinici;
+            if (naixement % traspas == 0)
+            {
+                dif = dif - 1;
+            }
             //Calculem quants anys de traspàs hi ha entre 1948 i l'any de naixement introduït
             quants = dif / traspas;
             Console.WriteLine("Entre 1948 i el teu any de naixement hi ha " + quants + " anys de traspàs");
+
+            //Fase 3
+            bool estraspas = false;
+            int anytraspas;
+
+            if (dif > 4)
+            {
+                for (int i = 1; i <= quants; i++)
+                {
+                    anytraspas = anyinici + (traspas * i);
+                    if (anytraspas!= naixement)
+                    {
+                        Console.WriteLine(anytraspas);
+                    }
+                }
+            }
+
+            if (naixement % traspas == 0)
+            {
+                estraspas = true;
+            }
+
+            if (estraspas)
+            {
+                Console.WriteLine("El teu any de naixement és de traspàs");
+            }
+            else
+            {
+                Console.WriteLine("El teu any de naixement NO és de traspàs");
+            }
         }
     }
 }
