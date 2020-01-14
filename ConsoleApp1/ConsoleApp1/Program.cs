@@ -37,12 +37,12 @@ namespace ConsoleApp1
             int traspas = 4;
             int quants;
 
-            //Demanar que introdueixi data de naixement
-            Console.WriteLine("Introdueix la teva data de naixement i prem Enter");
+            //Demanar que introdueixi any de naixement
+            Console.WriteLine("Introdueix el teu any de naixement i prem Enter");
             naixement = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("------------------------------------------");
 
-            //Calculem diferència d'anys
+            //Calculem diferència d'anys i treiem l'introduït si és de traspàs
             dif = naixement - anyinici;
             if (naixement % traspas == 0)
             {
@@ -68,6 +68,9 @@ namespace ConsoleApp1
                 }
             }
 
+            string sitraspas = "El teu any de naixement és de traspàs";
+            string notraspas = "El teu any de naixement NO és de traspàs";
+
             if (naixement % traspas == 0)
             {
                 estraspas = true;
@@ -75,11 +78,52 @@ namespace ConsoleApp1
 
             if (estraspas)
             {
-                Console.WriteLine("El teu any de naixement és de traspàs");
+                Console.WriteLine(sitraspas);
             }
             else
             {
-                Console.WriteLine("El teu any de naixement NO és de traspàs");
+                Console.WriteLine(notraspas);
+            }
+
+            //Fase 4
+            Console.WriteLine("------------------------------------------");
+
+            string dianaixement;
+            string mesnaixement;
+            string anynaixement;
+            string nomsencer;
+            nomsencer = ($"{nom} {cognom1} {cognom2}");
+
+            //Recuperem dia naixement i el tractem per si no té dues xifres
+            Console.WriteLine("Introdueix el dia del teu naixement");
+            dianaixement = Console.ReadLine();
+            dia = Convert.ToInt32(dianaixement);
+            if ((dia < 10) && (dianaixement.Substring(0,1) != "0"))
+            {
+                dianaixement = ($"0{dianaixement}");
+            }
+            //Recuperem mes naixement i el tractem per si no té dues xifres
+            Console.WriteLine("Ara introdueix el mes del teu naixement");
+            mesnaixement = Console.ReadLine();
+            mes = Convert.ToInt32(mesnaixement);
+            if ((mes < 10) && (mesnaixement.Substring(0, 1) != "0"))
+            {
+                mesnaixement = ($"0{mesnaixement}");
+            }
+            Console.WriteLine("Finalment introdueix l'any del teu naixement");
+            anynaixement = Console.ReadLine();
+
+            Console.WriteLine("------------------------------------------");
+
+            Console.WriteLine($"El meu nom és {nomsencer}");
+            Console.WriteLine($"Vaig neixer el {dianaixement}/{mesnaixement}/{anynaixement}");
+            if (estraspas)
+            {
+                Console.WriteLine("El meu any de naixement és de traspàs");
+            }
+            else
+            {
+                Console.WriteLine("El meu any de naixement NO és de traspàs");
             }
         }
     }
